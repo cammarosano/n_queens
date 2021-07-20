@@ -42,11 +42,11 @@ int		solve(int i, int *array, int n)
 	}
 	sol_counter = 0;
 	x = 0;
-	while (x < n)
+	while (x < n) // backtracking algo 
 	{
 		array[i] = x;
 		if (check(array, i))
-			sol_counter += solve(i + 1, array, n); // backtracking algo 
+			sol_counter += solve(i + 1, array, n);
 		x++;
 	}
 	return (sol_counter);
@@ -64,9 +64,11 @@ int	main(int argc, char **argv)
 {
 	if (argc < 2)
 	{
-		printf("Usage: ./queenie N , where N is the chess board size (N x N)\n");
+		printf("Usage: ./queenie N , where N is the chessboard size (N x N)\n");
 		return (1);
 	}
 	int n = atoi(argv[1]);
+	if (n < 1 || n > 16)
+		printf("N must be in the [1, 16] range\n");
 	printf("number of solutions: %d\n", n_queens_puzzle(n));
 }
